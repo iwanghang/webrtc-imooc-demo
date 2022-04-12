@@ -57,6 +57,7 @@ var tls_options = {
 //https server
 var https_server = https.createServer(options, app);
 var io = socketIo.listen(https_server);
+var io = socketIo.listen(http_server);
 
 io.sockets.on('connection', (socket)=> {
 
