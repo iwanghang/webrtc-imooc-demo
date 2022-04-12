@@ -44,7 +44,7 @@ http_server.listen(80, '0.0.0.0');
 
 var options = {
 	key : fs.readFileSync('./cert/www.iaiia.site.key'),
-	cert: fs.readFileSync('./cert/www.iaiia.site_bundle.pem')
+	cert: fs.readFileSync('./cert/www.iaiia.site_bundle.pem'),
 	secureOptions: constains.SSL_OP_NO_TLSv1_2 | constains.SSL_OP_NO_TLSv1_1
 }
 
