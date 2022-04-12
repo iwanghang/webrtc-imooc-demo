@@ -45,6 +45,11 @@ http_server.listen(80, '0.0.0.0');
 
 var options = {
 	key : fs.readFileSync('./cert/www.iaiia.site.key'),
+	cert: fs.readFileSync('./cert/www.iaiia.site_bundle.pem')
+}
+
+var tls_options = {
+	key : fs.readFileSync('./cert/www.iaiia.site.key'),
 	cert: fs.readFileSync('./cert/www.iaiia.site_bundle.pem'),
 	secureOptions: constains.SSL_OP_NO_TLSv1_2 | constains.SSL_OP_NO_TLSv1_1
 }
@@ -95,7 +100,7 @@ io.sockets.on('connection', (socket)=> {
 
 https_server.listen(443, '0.0.0.0');
 
-var tls_server = tls.createServer(options, function(test) {
+var tls_server = tls.createServer(tls_options, function(test) {
         console.log('server connected', test.authorized ? 'authorized' : 'unauthorized');
         test.write("welcome!\n");
         test.setEncoding('utf8');
